@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$" dumb="true">
+      <excludeFolder url="file://$MODULE_DIR$/Voyages-Et-Partages_Front/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/Voyages-Et-Partages_Front/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/Voyages-Et-Partages_Front/public" />
+      <excludeFolder url="file://$MODULE_DIR$/Voyages-et-Partages/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/Voyages-et-Partages/target" />
+    </content>
+  </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="0b411bd8-ffcb-4862-9974-810a8c015545" />
+  </component>
+</module>

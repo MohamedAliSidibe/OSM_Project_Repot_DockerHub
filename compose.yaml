@@ -1,0 +1,71 @@
+services:
+  osm-voyage-frontend:
+    build: ./Voyages-Et-Partages_Front
+    image: momojr/osm-voyage-frontend:latest
+    container_name: osm-voyage-frontend
+    depends_on:
+      - osm-voyage-service
+      - postgres
+      - pgadmin
+    ports:
+      - "5173:80"
+    volumes:
+      - ./Voyages-Et-Partages_Front:/app
+      - /app/node_modules
+    networks:
+      - osm-network
+  osm-voyage-service:
+    build: ./Voyages-et-Partages
+    image: momojr/osm-voyage-service:latest
+    container_name: osm-voyage-container
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./Voyages-et-Partages:/app
+      - maven_cache:/root/.m2
+    networks:
+      - osm-network
+  postgres:
+    image: postgis/postgis:latest
+    container_name: my_postgis_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - osm-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: my_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "5050:80"
+    volumes:
+      - pgAdmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - osm-network
+
+volumes:
+  postgres_data:
+  pgAdmin_data:
+  maven_cache:
+networks:
+  osm-network:
