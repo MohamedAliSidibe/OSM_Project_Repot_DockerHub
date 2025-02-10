@@ -150,7 +150,12 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ---
 
-## 🐳 7. Images Docker sur Docker Hub
+## 🐳🌿 7. Bonnes pratiques Git avec le modèle Trunk-Based
+Ce projet suit le modèle de développement trunk-based, où les modifications vont directement dans la branche principale. Cela favorise des cycles de développement courts, réduit les conflits de fusion et assure une base de code toujours prête pour la production.
+
+---
+
+## 🐳 8. Images Docker sur Docker Hub
 
 Les images utilisées pour ce projet sont disponibles ici :
 
@@ -159,7 +164,7 @@ Les images utilisées pour ce projet sont disponibles ici :
 
 ---
 
-## ❌ 8. Arrêter et nettoyer
+## ❌ 9. Arrêter et nettoyer
 
 Arrêter les services et supprime les conteneurs:
 
@@ -172,8 +177,4 @@ Supprimer les volumes associés :
 ```bash
 docker compose down -v
 ```
-
----
-
-🎉 **Le projet est maintenant prêt à être exécuté !**
 
